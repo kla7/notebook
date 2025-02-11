@@ -5,7 +5,7 @@ from notebook import NoteBook
 
 app = FastAPI()
 
-nb = NoteBook('test')
+nb = NoteBook('data')
 
 
 class Note(BaseModel):
