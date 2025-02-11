@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        <h1>NoteBook</h1>
+    </head>
+    <a href="{{ '/' }}">Home</a>
+    <body>
+        <h2>{{ note_name }}</h2>
+        <div>
+            <note>{{ note_content }}</note>
+        </div>
+        <br>
+        <form method="get" class="edit">
+            <input type="submit" value="Edit" name="edit">
+        </form>
+        <form method="get">
+            <input type="submit" value="Delete" name="delete"
+                   onclick="return confirm('Are you sure you want to delete this note?')">
+        </form>
+        {% if edit %}
+        <form method="get">
+            <textarea name="new_note_content">{{ note_content }}</textarea><br>
+            <input type="submit" value="Save edit" name="save_edit">
+        </form>
+        {% endif %}
+    </body>
+</html>

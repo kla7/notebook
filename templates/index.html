@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        <h1>NoteBook</h1>
+    </head>
+    <body>
+        <form action="/find" method="get">
+            Search term:<br>
+            <input type="text" class="text" name="search_term">
+            <input type="submit" value="Submit">
+        </form>
+        <div>
+            <strong>All notes</strong><br>
+            {% for note_name in notes_list %}
+                <a href="{{ '/note/%s'%note_name|urlencode }}">{{ note_name }}</a><br>
+            {% endfor %}
+            </ul>
+        </div>
+        <br>
+        <div>
+            <form method="get">
+                <input type="text" name="note_name" class="text" style="margin: 10px;"><br>
+                <textarea name="note_content"></textarea><br>
+                <input type="submit" value="Add note" name="add_note">
+            </form>
+        </div>
+    </body>
+</html>
