@@ -18,10 +18,13 @@
                    onclick="return confirm('Are you sure you want to delete this note?')">
         </form>
         {% if edit %}
-        <form method="get">
-            <textarea name="new_note_content">{{ note_content }}</textarea><br>
-            <input type="submit" value="Save edit" name="save_edit">
-        </form>
-        {% endif %}
+        <div>
+            <form method="get">
+                <input type="text" name="new_note_name" class="text" style="margin: 10px;" value="{{ note_name }}"><br>
+                <textarea name="new_note_content">{{ note_content }}</textarea><br>
+                <input type="submit" value="Save edit" name="save_edit">
+            </form>
+            {% endif %}
+        </div>
     </body>
 </html>

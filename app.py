@@ -11,7 +11,7 @@ nb = NoteBook('test')
 class Index(Resource):
     """
     Renders the main page of the app. Functions available: find notes by a search term,
-    see a list of note names for all the notes in the notebook, add a new note."""
+    see a list of note names for all the notes in the notebook, add a new note, and clear the notebook."""
     def get(self):
         notes_list = nb.notes()
         add_note = request.args.get('add_note', type=bool)
@@ -22,8 +22,15 @@ class Index(Resource):
             nb.add(note_name, note_content)
             return redirect(url_for('index'))
 
+        clear_notebook = request.args.get('clear', type=bool)
+
+        if clear_notebook:
+            nb.clear()
+            return redirect(url_for('index'))
+
         headers = {'Content-Type': 'text/html'}
-        return make_response(render_template('index.html', notes_list=notes_list), headers)
+        return make_response(render_template('index.html', notes_list=notes_list,
+                                             clear=clear_notebook), headers)
 
 
 class Find(Resource):
@@ -48,10 +55,19 @@ class Note(Resource):
         edit = request.args.get('edit', type=bool)
         save_edit = request.args.get('save_edit', type=bool)
         new_note_content = request.args.get('new_note_content', type=str)
+        new_note_name = request.args.get('new_note_name', type=str)
 
         if save_edit:
-            nb.edit(note_name, new_note_content)
-            return redirect(request.referrer)
+            if new_note_name != note_name and new_note_content != note_content:
+                nb.edit(note_name, new_note_content)
+                nb.rename(note_name, new_note_name)
+                return redirect(url_for('note', note_name=new_note_name))
+            elif new_note_content != note_content:
+                nb.edit(note_name, new_note_content)
+                return redirect(url_for('note', note_name=note_name))
+            else:
+                nb.rename(note_name, new_note_name)
+                return redirect(url_for('note', note_name=new_note_name))
 
         delete = request.args.get('delete', type=bool)
 

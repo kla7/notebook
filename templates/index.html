@@ -24,5 +24,10 @@
                 <input type="submit" value="Add note" name="add_note">
             </form>
         </div>
+        <form method="get">
+            <input type="submit" value="Clear notebook" name="clear" style="margin-top: 10px"
+                   onclick="return confirm('THIS ACTION IS IRREVERSIBLE.\n' +
+                    'Are you sure you want to clear the notebook?')">
+        </form>
     </body>
 </html>
