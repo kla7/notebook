@@ -5,7 +5,7 @@ from notebook import NoteBook
 app = Flask(__name__)
 api = Api(app)
 
-nb = NoteBook('test')
+nb = NoteBook('data')
 
 
 class Index(Resource):
