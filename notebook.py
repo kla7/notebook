@@ -1,5 +1,6 @@
 import json
 import os
+import re
 
 
 class NoteBook:
@@ -46,7 +47,7 @@ class NoteBook:
         :return: True if the note was successfully added.
         """
         if note_name in self.data:
-            name_duplicates = [key for key in self.data if note_name in key]
+            name_duplicates = [key for key in self.data if re.match(fr"^{note_name}\b", key)]
             duplicate_count = len(name_duplicates)
             note_name = f"{note_name} ({duplicate_count})"
 
