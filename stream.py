@@ -1,7 +1,7 @@
 import streamlit as st
 from notebook import NoteBook
 
-nb = NoteBook('json')
+nb = NoteBook('data')
 
 
 def clear_add():
