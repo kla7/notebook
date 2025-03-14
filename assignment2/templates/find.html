@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        <h1>NoteBook</h1>
+    </head>
+    <a href="{{ '/' }}">Home</a>
+    <body>
+    <h2>Search term: <em>{{ search_term }}</em></h2>
+    <div>
+        {% for note_name in found_notes %}
+        <a href="{{ '/note/%s'%note_name|urlencode }}">{{ note_name }}</a><br>
+        {% endfor %}
+    </div>
+    </body>
+</html>
