@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        <h1>NoteBook</h1>
+    </head>
+    <a href="{{ '/' }}">Home</a>
+    <body>
+    <h2>Search term: <em>{{ search_term }}</em></h2>
+    <div>
+        <strong>Name match</strong><br>
+        {% for note in name_match_notes %}
+            <a href="{{ '/%s'%note.name|urlencode }}">{{ note.name }}</a><br>
+        {% endfor %}
+    </div>
+    <br>
+    <div>
+        <strong>Content match</strong><br>
+        {% for note in content_match_notes %}
+            <a href="{{ '/%s'%note.name|urlencode }}">{{ note.name }}</a><br>
+        {% endfor %}
+    </div>
+    </body>
+</html>

@@ -11,10 +11,9 @@
         </form>
         <div>
             <strong>All notes</strong><br>
-            {% for note_name in notes_list %}
-                <a href="{{ '/note/%s'%note_name|urlencode }}">{{ note_name }}</a><br>
+            {% for note in notes %}
+                <a href="{{ '/%s'%note.name|urlencode }}">{{ note.name }}</a><br>
             {% endfor %}
-            </ul>
         </div>
         <br>
         <div>
