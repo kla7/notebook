@@ -8,10 +8,10 @@
         <h2>{{ note.name }}</h2>
         <div>
             <datetime><strong>{{ note.time_created }}</strong></datetime>
-            {% if note.time_updated %}
+            {% if note.time_edited %}
                 <edited>(Edited)</edited>
                 <hover>
-                {{ note.time_updated }}
+                {{ note.time_edited }}
                 </hover>
             {% endif %}
             <br>
