@@ -1,23 +1,31 @@
-<html>
+<html lang="en-us">
     <head>
+        <title>NoteBook</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
-        <h1>NoteBook</h1>
     </head>
+    <h1>NoteBook</h1>
     <a href="{{ '/' }}">Home</a>
     <body>
-    <h2>Search term: <em>{{ search_term }}</em></h2>
-    <div>
-        <strong>Name match</strong><br>
-        {% for note in name_match_notes %}
-            <a href="{{ '/%s'%note.name|urlencode }}">{{ note.name }}</a><br>
-        {% endfor %}
-    </div>
-    <br>
-    <div>
-        <strong>Content match</strong><br>
-        {% for note in content_match_notes %}
-            <a href="{{ '/%s'%note.name|urlencode }}">{{ note.name }}</a><br>
-        {% endfor %}
-    </div>
+        <h2>Search term: <em>{{ search_term }}</em></h2>
+        <div>
+            <strong>Name match</strong><br>
+            {% for note in name_match_notes %}
+                <a href="{{ '/%s'%note.note_name|urlencode }}">{{ note.note_name }}</a><br>
+            {% endfor %}
+        </div>
+        <br>
+        <div>
+            <strong>Content match</strong><br>
+            {% for note in content_match_notes %}
+                <a href="{{ '/%s'%note.note_name|urlencode }}">{{ note.note_name }}</a><br>
+            {% endfor %}
+        </div>
+        <br>
+        <div>
+            <strong>Comment match</strong><br>
+            {% for comment in comment_match_notes %}
+                <a href="{{ '/%s'%comment.note_name|urlencode }}">{{ comment.note_name }}</a><br>
+            {% endfor %}
+        </div>
     </body>
 </html>

@@ -58,9 +58,13 @@ hover {
     position: absolute;
     z-index: 1;
 }
+input {
+    cursor: pointer;
+}
 input.text {
     height: 20px;
     width: 300px;
+    cursor: text;
 }
 textarea {
     margin: 10px;
@@ -70,7 +74,28 @@ textarea {
     min-height: 20px;
     min-width: 300px;
 }
-form.edit {
+form {
+    margin: 0;
+}
+form.float {
     float: left;
     margin-right: 10px;
+}
+.collapsible {
+    background-color: powderblue;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    font-size: large;
+}
+.comments {
+    display: none;
+}
+.comment {
+    margin: 10px;
+}
+.collapsible:hover {
+    background-color: skyblue;
 }
