@@ -1,0 +1,72 @@
+<html lang="en-us">
+    <head>
+        <title>NoteBook</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    </head>
+    <h1>NoteBook</h1>
+    <a href="{{ '/' }}">Home</a>
+    <body>
+        <h2>{{ note.note_name }}</h2>
+        <div>
+            <datetime><strong>{{ note.time_created }}</strong></datetime>
+            {% if note.time_edited %}
+                <edited>(Edited)</edited>
+                <hover>
+                {{ note.time_edited }}
+                </hover>
+            {% endif %}
+            <br>
+            <note>{{ note.note_content }}</note>
+        </div>
+        <br>
+        <form method="get" class="float">
+            <input type="submit" value="Edit" name="edit">
+        </form>
+        <form method="get">
+            <input type="submit" value="Delete" name="delete"
+                   onclick="return confirm('Are you sure you want to delete this note?')">
+        </form>
+        {% if edit %}
+            <br>
+            <div>
+                <form method="get">
+                    <input type="text" name="new_note_name" class="text" style="margin: 10px;" value="{{ note.note_name }}"><br>
+                    <textarea name="new_note_content">{{ note.note_content }}</textarea><br>
+                    <input type="submit" value="Save edit" name="save_edit">
+                </form>
+            </div>
+        {% endif %}
+        <br>
+        {% if comments_count == 1 %}
+            <button type="button" class="collapsible"><strong>{{ comments_count }} COMMENT</strong></button>
+        {% endif %}
+        {% if comments_count != 1 %}
+            <button type="button" class="collapsible"><strong>{{ comments_count }} COMMENTS</strong></button>
+        {% endif %}
+            <br>
+            <div class="comments">
+                {% for comment in comments_list %}
+                    <div class="comment">
+                        <datetime><strong>{{ comment.time_created }}</strong></datetime>
+                        <br>
+                        <note>{{ comment.comment_content }}</note>
+                    </div>
+                {% endfor %}
+            </div>
+        <br>
+        <form method="get">
+            <input type="submit" value="Add comment" name="add_comment">
+        </form>
+        {% if add_comment %}
+            <br>
+            <div>
+                <form method="get">
+                    <textarea name="comment_content" style="height: 100px;" placeholder="Your comment here"></textarea>
+                    <br>
+                    <input type="submit" value="Post comment" name="post_comment">
+                </form>
+            </div>
+        {% endif %}
+    </body>
+    <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
+</html>
