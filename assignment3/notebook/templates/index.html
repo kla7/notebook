@@ -1,0 +1,35 @@
+<html lang="en-us">
+    <head>
+        <title>NoteBook</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    </head>
+    <h1>NoteBook</h1>
+    <body>
+        <form action="/find" method="get">
+            Search term:<br>
+            <input type="text" class="text" name="search_term">
+            <input type="submit" value="Submit">
+        </form>
+        <br>
+        <div>
+            <strong>All notes</strong><br>
+            {% for note in notes %}
+                <a href="{{ '/%s'%note.note_name|urlencode }}">{{ note.note_name }}</a><br>
+            {% endfor %}
+        </div>
+        <br>
+        <div>
+            <form method="get">
+                <input type="text" name="note_name" class="text" style="margin: 10px;" placeholder="Note name"><br>
+                <textarea name="note_content" placeholder="Note content"></textarea><br>
+                <input type="submit" value="Add note" name="add_note">
+            </form>
+        </div>
+        <br>
+        <form method="get">
+            <input type="submit" value="Clear notebook" name="clear"
+                   onclick="return confirm('THIS ACTION IS IRREVERSIBLE.\n' +
+                    'Are you sure you want to clear the notebook?')">
+        </form>
+    </body>
+</html>
