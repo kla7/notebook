@@ -28,3 +28,7 @@ with the following additional features:
 I added the additional features:
 * Search for notes whose name matches a search term
 * Add a date that shows when a note was last edited
+
+## Assignment 3 | Docker
+
+For this assignment, our task is to Dockerize the notebook app.

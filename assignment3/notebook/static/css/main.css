@@ -1,0 +1,101 @@
+* {
+    font-family: Calibri, serif;
+}
+html {
+    padding: 5px;
+}
+h1 {
+    background-color: lightskyblue;
+    border-style: solid;
+    border-color: black;
+    border-width: thin;
+    padding: 10px;
+}
+h2 {
+    color: royalblue;
+    border-style: solid;
+    border-color: black;
+    border-width: thin;
+    padding: 10px;
+}
+div {
+    font-size: medium;
+    border-style: solid;
+    border-color: black;
+    border-width: thin;
+    padding: 10px;
+}
+a {
+    text-decoration: none;
+    color: dodgerblue;
+}
+a:visited {
+    text-decoration: none;
+    color: mediumpurple;
+}
+a:hover {
+    text-decoration: none;
+    color: yellowgreen;
+}
+note {
+    white-space: preserve-breaks;
+}
+datetime {
+    color: cornflowerblue;
+}
+edited {
+    font-size: x-small;
+    position: relative;
+    display: inline-block;
+}
+hover {
+    font-size: small;
+    visibility: hidden;
+    background-color: lightgray;
+    border: 1px solid black;
+    padding: 3px;
+    margin-left: 5px;
+    position: absolute;
+    z-index: 1;
+}
+input {
+    cursor: pointer;
+}
+input.text {
+    height: 20px;
+    width: 300px;
+    cursor: text;
+}
+textarea {
+    margin: 10px;
+    resize: both;
+    height: 200px;
+    width: 600px;
+    min-height: 20px;
+    min-width: 300px;
+}
+form {
+    margin: 0;
+}
+form.float {
+    float: left;
+    margin-right: 10px;
+}
+.collapsible {
+    background-color: powderblue;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    font-size: large;
+}
+.comments {
+    display: none;
+}
+.comment {
+    margin: 10px;
+}
+.collapsible:hover {
+    background-color: skyblue;
+}
